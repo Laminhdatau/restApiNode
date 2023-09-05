@@ -1,0 +1,14 @@
+### POST Request ###
+
+POST http://192.168.231.21:3000/absen
+ Content-Type: application/json
+
+{
+  "id_user": "8acf589d-4b56-11ee-9762-0242ac120002",
+  "id_jenis_absen": 1,
+  "id_lokasi": 1
+}
+
+### GET Request ###
+
+GET http://192.168.231.21:3000/history
