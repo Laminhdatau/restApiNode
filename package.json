@@ -17,5 +17,13 @@
   "keywords": [],
   "author": "Laminhdatau",
   "license": "ISC",
-  "description": "absensi"
+  "description": "absensi",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Laminhdatau/restApiNode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Laminhdatau/restApiNode/issues"
+  },
+  "homepage": "https://github.com/Laminhdatau/restApiNode#readme"
 }
