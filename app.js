@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 const path = require('path');
-const fs = require('fs');
 
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

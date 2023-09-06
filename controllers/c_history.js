@@ -1,6 +1,5 @@
-const express = require('express');
+// const express = require('express');
 const m_history = require('../models/m_history'); 
-const router = express.Router();
 
 const getAllHistory = (req, res) => {
   m_history.getAllHistory((err, result) => {

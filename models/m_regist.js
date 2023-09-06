@@ -1,10 +1,11 @@
-// registerModel.js
 const db = require('../koneksi/config');
+const uuid = require('uuid');
 
-class m_regist {
-  register(username, password, id_role, nik, user_image, callback) {
-    const sql = 'INSERT INTO t_user (username, password, id_role, nik, user_image) VALUES (?, ?, ?, ?, ?)';
-    const values = [username, password, id_role, nik, user_image];
+const m_regist = {
+  register: (username, password, id_role, nik, callback) => {
+    const id_user = uuid.v4();
+    const sql = 'INSERT INTO t_user (id_user, username, password, id_role, nik) VALUES (?, ?, ?, ?, ?)';
+    const values = [id_user, username, password, id_role, nik];
 
     db.query(sql, values, (err, result) => {
       if (err) {
@@ -13,7 +14,7 @@ class m_regist {
       }
       callback(null, result);
     });
-  }
-}
+  },
+};
 
 module.exports = m_regist;

@@ -1,6 +1,6 @@
 ### POST Request ###
 
-POST http://192.168.231.21:3000/absen
+POST http://192.168.174.21:3000/absen
  Content-Type: application/json
 
 {
@@ -11,4 +11,27 @@ POST http://192.168.231.21:3000/absen
 
 ### GET Request ###
 
-GET http://192.168.231.21:3000/history
+GET http://192.168.174.21:3000/history
+
+### POST REGISTER ###
+
+POST http://192.168.174.21:3000/register
+
+{
+  "username": "cek",
+  "password": "cek",
+  "id_role": 1,
+  "nik": "cek",
+  "user_image":"p.jpg"
+}
+
+
+### POST LOGIN ###
+
+POST http://192.168.174.21:3000/login
+
+{
+  "username": "minjeey",
+  "password": "minjeey"
+}
+
