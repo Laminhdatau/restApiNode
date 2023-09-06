@@ -11,10 +11,10 @@ const mysql = require('mysql');
 
 // Hosting
 const db = mysql.createConnection({
-  host: '172.18.0.1',
-  user: 'id19981001_absensi',
-  password: '@Absensi123',
-  database: 'id19981001_absensi'
+  host: 'bizv2dkqajuck4tr1iao-mysql.services.clever-cloud.com',
+  user: 'uc5bmnhixjf5rqkn',
+  password: 'NJK4SrauAA3SDhq8l5DG',
+  database: 'bizv2dkqajuck4tr1iao'
 });
 
 
