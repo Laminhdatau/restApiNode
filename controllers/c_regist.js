@@ -38,7 +38,7 @@ const register = (req, res) => {
     const user_image = req.file;
 
     if (!user_image) {
-      return res.status(400).json({ error: 'Gambar tidak ditemukan' });
+      return res.status(400).json({ error: 'Gambar tidak ditemukan cuy' });
     }
 
     const user_image_path = user_image.filename;
