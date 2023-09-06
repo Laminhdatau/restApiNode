@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = procces.env.PORT | 3000;
+const port = process.env.PORT | 3000;
 const path = require('path');
 
 
@@ -25,6 +25,10 @@ app.get('/get_image/:imageName', (req, res) => {
   const imagePath = path.join(__dirname, 'uploads', imageName);
   res.sendFile(imagePath);
 });
+
+app.get('/',(req,res)=>{
+  res.json({message:"Selamat Datang"});
+})
 
 app.listen(port, () => {
   console.log(`Server berjalan di Port ${port}`);
