@@ -11,10 +11,10 @@ POST http://192.168.174.21:3000/absen
 
 ### GET Request ###
 
-GET http://192.168.174.21:3000/history
+GET http://192.168.123.21:3000/history
 
 ### POST REGISTER ###
-POST http://192.168.174.21:3000/register
+POST http://192.168.123.21:3000/register
 Content-Type: multipart/form-data
 
 {

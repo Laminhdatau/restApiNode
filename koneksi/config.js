@@ -1,21 +1,21 @@
 const mysql = require('mysql');
 
 // Konfigurasi koneksi MySQL lokal
-// const db = mysql.createConnection({
-//   host: '192.168.123.21',
-//   user: 'root',
-//   password: 'root',
-//   database: 'absensi'
-// });
+const db = mysql.createConnection({
+  host: '192.168.123.21',
+  user: 'root',
+  password: 'root',
+  database: 'absensi'
+});
 
 
 // Hosting
-const db = mysql.createConnection({
-  host: 'bizv2dkqajuck4tr1iao-mysql.services.clever-cloud.com',
-  user: 'uc5bmnhixjf5rqkn',
-  password: 'NJK4SrauAA3SDhq8l5DG',
-  database: 'bizv2dkqajuck4tr1iao'
-});
+// const db = mysql.createConnection({
+//   host: 'bizv2dkqajuck4tr1iao-mysql.services.clever-cloud.com',
+//   user: 'uc5bmnhixjf5rqkn',
+//   password: 'NJK4SrauAA3SDhq8l5DG',
+//   database: 'bizv2dkqajuck4tr1iao'
+// });
 
 
 db.connect((err) => {
