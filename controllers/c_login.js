@@ -9,7 +9,12 @@ const login = (req, res) => {
     } else if (!user) {
       res.status(401).json({ error: 'Kredensial salah' });
     } else {
-      res.status(200).json({ message: 'Autentikasi berhasil', user });
+      // Cek id_role di sini
+      if (user.id_role === 1) {
+        res.status(200).json({ message: 'Autentikasi berhasil', user });
+      } else {
+        res.status(403).json({ error: 'Tidak memiliki akses yang diperlukan' });
+      }
     }
   });
 };

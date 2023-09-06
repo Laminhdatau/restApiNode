@@ -21,16 +21,18 @@ Content-Type: multipart/form-data
   "username": "cek",
   "password": "cek",
   "id_role": 1,
-  "nik": 75011324
+  "nik": 75011324,
+  "user_image":"picture.jpg"
 }
 
 
 ### POST LOGIN ###
 
 POST http://192.168.174.21:3000/login
+ Content-Type: application/json
 
 {
-  "username": "minjeey",
-  "password": "minjeey"
+  "username": "lamin",
+  "password": "lamin"
 }
 
