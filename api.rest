@@ -15,14 +15,13 @@ GET http://192.168.174.21:3000/history
 
 ### POST REGISTER ###
 POST http://192.168.174.21:3000/register
-Content-Type: application/json
+Content-Type: multipart/form-data
 
 {
   "username": "cek",
   "password": "cek",
   "id_role": 1,
-  "nik": 75011324,
-  "user_image":"picture.jpg"
+  "nik": 75011324
 }
 
 

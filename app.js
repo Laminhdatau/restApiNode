@@ -14,7 +14,6 @@ const c_absen = require('./controllers/c_absen');
 const c_regist = require('./controllers/c_regist');
 const c_login = require('./controllers/c_login');
 
-// Rute untuk registrasi pengguna
 app.post('/register', c_regist.register);
 app.post('/login', c_login.login);
 app.get('/history', c_history.getAllHistory);
