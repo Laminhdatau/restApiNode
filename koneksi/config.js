@@ -8,9 +8,10 @@ const db = mysql.createConnection({
   database: 'absensi'
 });
 
-// Koneksi ke MySQL
+
 db.connect((err) => {
   if (err) {
+    console.log(err);
     throw err;
   }
   console.log('Terhubung ke database MySQL');
