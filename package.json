@@ -94,7 +94,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -105,5 +105,6 @@
   "bugs": {
     "url": "https://github.com/Laminhdatau/restApiNode/issues"
   },
-  "homepage": "https://github.com/Laminhdatau/restApiNode#readme"
+  "homepage": "https://github.com/Laminhdatau/restApiNode#readme",
+  "devDependencies": {}
 }
