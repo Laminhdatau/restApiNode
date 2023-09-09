@@ -1,17 +1,19 @@
 ### POST Request ###
 
-POST http://192.168.174.21:3000/absen
+POST http://192.168.22.21:3000/absen
  Content-Type: application/json
 
 {
-  "id_user": "8acf589d-4b56-11ee-9762-0242ac120002",
-  "id_jenis_absen": 1,
-  "id_lokasi": 1
+  "id_user": "60f79908-c641-40b4-8e5d-a9a88f3d3d5d",
+  "id_jenis_absen": 2,
+  "id_lokasi": "ec04cf67-4ea5-11ee-a5b4-0242ac120002",
+  "latitude":0.719395,
+  "longitude":122.532529
 }
 
 ### GET Request ###
 
-GET http://192.168.123.21:3000/history
+GET http://192.168.22.21:3000/history/60f79908-c641-40b4-8e5d-a9a88f3d3d5d 	
 
 ### POST REGISTER ###
 POST http://192.168.123.21:3000/register
@@ -28,7 +30,7 @@ Content-Type: multipart/form-data
 
 ### POST LOGIN ###
 
-POST http://192.168.174.21:3000/login
+POST http://192.168.22.21:3000/login
  Content-Type: application/json
 
 {

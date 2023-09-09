@@ -2,7 +2,7 @@ const mysql = require('mysql');
 
 // Konfigurasi koneksi MySQL lokal
 const db = mysql.createConnection({
-  host: '192.168.123.21',
+  host: '192.168.44.51',
   user: 'root',
   password: 'root',
   database: 'absensi'

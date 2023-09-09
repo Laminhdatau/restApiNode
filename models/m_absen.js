@@ -1,8 +1,9 @@
 const db = require('../koneksi/config');
+const uuid=require('uuid');
 
 const m_absen = {
   createAbsen: (newAbsen, callback) => {
-    const { id_user, id_jenis_absen } = newAbsen;
+    const { id_user, id_jenis_absen, id_lokasi, time_absen } = newAbsen;
 
     const countAbsenMasukQuery = 'SELECT COUNT(*) AS jumlah_absen_masuk FROM t_absen WHERE id_user = ? AND id_jenis_absen = 1 AND DATE(time_absen) = CURDATE()';
 
@@ -25,20 +26,21 @@ const m_absen = {
         const jumlahAbsenPulang = pulangResult[0].jumlah_absen_pulang;
 
         if (id_jenis_absen === 1 && jumlahAbsenMasuk >= 1) {
-          const error = new Error('Pengguna sudah melakukan satu absen masuk dalam satu hari.');
+          const error = new Error('Maaf, Anda sudah absen masuk hari ini...!!');
           callback(error, null);
           return;
         }
 
         if (id_jenis_absen === 2 && jumlahAbsenPulang >= 1) {
-          const error = new Error('Pengguna sudah melakukan satu absen pulang dalam satu hari.');
+          const error = new Error('Maaf, Anda sudah absen pulang hari ini...!!');
           callback(error, null);
           return;
         }
 
-        const { id_absen, id_lokasi } = newAbsen;
-        const insertQuery = 'INSERT INTO t_absen (id_absen, id_user, id_jenis_absen, id_lokasi) VALUES (?, ?, ?, ?)';
-        const values = [id_absen, id_user, id_jenis_absen, id_lokasi];
+        const insertQuery = 'INSERT INTO t_absen (id_absen,id_user, id_jenis_absen, id_lokasi, time_absen) VALUES (?,?, ?, ?, ?)';
+        const id_absen = uuid.v4();
+
+        const values = [id_absen,id_user, id_jenis_absen, id_lokasi, time_absen];
 
         db.query(insertQuery, values, (insertErr, insertResult) => {
           if (insertErr) {
@@ -49,8 +51,7 @@ const m_absen = {
         });
       });
     });
-  }
+  },
 };
 
 module.exports = m_absen;
-

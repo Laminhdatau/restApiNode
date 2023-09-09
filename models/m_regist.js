@@ -47,7 +47,7 @@ const m_regist = {
               });
               return;
             }
-            callback(null, id_user);
+            callback(null, id_user,hashedPassword);
           });
         });
       });

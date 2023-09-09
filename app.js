@@ -16,7 +16,8 @@ const c_login = require('./controllers/c_login');
 
 app.post('/register', c_regist.register);
 app.post('/login', c_login.login);
-app.get('/history', c_history.getAllHistory);
+app.get('/history/:id_user', c_history.getHistoryById);
+
 app.post('/absen', c_absen.createAbsen);
 
 
