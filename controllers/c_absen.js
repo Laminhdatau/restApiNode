@@ -12,7 +12,6 @@ const createAbsen = (req, res) => {
     return;
   }
 
-
   const time_absen = moment().tz('Asia/Makassar').format('YYYY-MM-DD HH:mm:ss');
 
   const newAbsen = {
@@ -21,7 +20,6 @@ const createAbsen = (req, res) => {
     id_lokasi,
     time_absen,
   };
-
 
   m_lokasi.getLocationById(id_lokasi, (lokasiErr, lokasiData) => {
     if (lokasiErr) {
@@ -39,18 +37,18 @@ const createAbsen = (req, res) => {
       longitude: lokasiData.longitude,
     };
 
-    const koordinat=lokasiKoordinat.latitude +", "+ lokasiKoordinat.longitude;
-    console.log(koordinat);
+    console.log("awallat "+ latitude);
+    console.log("akhirlat "+ lokasiData.latitude);
 
-const nameLokasi = lokasiData.nama_lokasi;
+    console.log("awalong "+longitude);
+    console.log("akhirlong "+lokasiData.longitude);
 
-  const locations={
-    nameLokasi,
-    koordinat
-  }
+    // Hitung jarak antara koordinat pengguna dan koordinat lokasi yang diharapkan
+    const jarak = hitungJarak(latitude, longitude, lokasiKoordinat.latitude, lokasiKoordinat.longitude);
+    console.log(jarak +" m");
 
-    console.log(lokasiKoordinat.latitude);
-    if (latitude === lokasiKoordinat.latitude && longitude === lokasiKoordinat.longitude) {
+    if (jarak <= 10) {
+      // Pengguna dianggap dalam radius 10 meter dari lokasi yang diharapkan, lanjutkan dengan pengiriman data absen
       m_absen.createAbsen(newAbsen, (absenErr, result) => {
         if (absenErr) {
           console.log(absenErr);
@@ -58,12 +56,35 @@ const nameLokasi = lokasiData.nama_lokasi;
           return;
         }
 
-        res.status(201).json({ message: 'Horee!! Selamat Bekerja', data: newAbsen,locations });
+        res.status(201).json({ message: 'Horee!! Selamat Bekerja', data: newAbsen, locations: lokasiKoordinat });
       });
     } else {
-      res.status(400).json({ error: 'Anda tidak berada di lokasi yang sesuai' });
+      // Pengguna berada lebih dari 10 meter dari lokasi yang diharapkan, respon dengan pesan error
+      res.status(400).json({ error: 'Anda harus berada kurang lebih 5 meter dari lokasi'+jarak });
     }
   });
 };
 
-module.exports = { createAbsen};
+// Fungsi untuk menghitung jarak antara dua koordinat geografis
+const hitungJarak = (lat1, lon1, lat2, lon2) => {
+  const R = 6371; // Radius Bumi dalam kilometer
+
+  const keRadians = (derajat) => {
+    return derajat * (Math.PI / 180);
+  };
+
+  const deltaLat = keRadians(lat2 - lat1);
+  const deltaLon = keRadians(lon2 - lon1);
+
+  const a =
+    Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
+    Math.cos(keRadians(lat1)) * Math.cos(keRadians(lat2)) * Math.sin(deltaLon / 2) * Math.sin(deltaLon / 2);
+
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  const jarak = R * c * 1000; // Jarak dalam meter, langsung dikalikan dengan 1000
+  return Math.round(jarak); // Hasil jarak dibulatkan ke bilangan bulat terdekat
+};
+
+
+module.exports = { createAbsen };

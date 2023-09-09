@@ -1,14 +1,14 @@
 ### POST Request ###
 
-POST http://192.168.22.21:3000/absen
+POST http://192.168.44.51:3000/absen
  Content-Type: application/json
 
 {
   "id_user": "60f79908-c641-40b4-8e5d-a9a88f3d3d5d",
-  "id_jenis_absen": 2,
+  "id_jenis_absen": 1,
   "id_lokasi": "ec04cf67-4ea5-11ee-a5b4-0242ac120002",
-  "latitude":0.719395,
-  "longitude":122.532529
+  "latitude":0.6754295,
+  "longitude":122.5505316
 }
 
 ### GET Request ###
