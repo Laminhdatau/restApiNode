@@ -5,14 +5,14 @@ const login = (req, res) => {
 
   m_login.login(username, password, (err, user) => {
     if (err) {
-      res.status(500).json({ error: 'Gagal melakukan autentikasi' });
+      res.status(500).json({ error: 'Gagal' });
     } else if (!user) {
-      res.status(401).json({ error: 'Kredensial salah' });
+      res.status(401).json({ error: 'Password salah' });
     } else {
       if (user.id_role === 3) {
-        res.status(200).json({ message: 'Autentikasi berhasil', user });
+        res.status(200).json({ message: 'Selamat datang', user });
       } else {
-        res.status(403).json({ error: 'Tidak memiliki akses yang diperlukan' });
+        res.status(403).json({ error: 'Akses ditolak' });
       }
     }
   });

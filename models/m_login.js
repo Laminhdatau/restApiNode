@@ -14,7 +14,6 @@ const m_login = {
       }
 
       if (results.length === 0) {
-        // Pengguna tidak ditemukan
         return callback(null, null);
       }
 

@@ -47,7 +47,7 @@ const createAbsen = (req, res) => {
     const jarak = hitungJarak(latitude, longitude, lokasiKoordinat.latitude, lokasiKoordinat.longitude);
     console.log(jarak +" m");
 
-    if (jarak <= 10) {
+    if (jarak <= 50000) {
       // Pengguna dianggap dalam radius 10 meter dari lokasi yang diharapkan, lanjutkan dengan pengiriman data absen
       m_absen.createAbsen(newAbsen, (absenErr, result) => {
         if (absenErr) {

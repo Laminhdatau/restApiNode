@@ -1,21 +1,17 @@
-// const express = require('express');
-const m_history = require('../models/m_history'); 
+const express = require('express');
+const m_history = require('../models/m_history');
 
-const getHistoryById = (req, res) => {
+const getHistoryById = async (req, res) => {
   const id_user = req.params.id_user;
   console.log(id_user);
 
-  m_history.getHistoryById(id_user, (err, result) => {
-    if (err) {
-      console.error('Error while getting history:', err);
-      console.log(id_user);
-      console.log(result);
-      console.log(err)
-      res.status(500).json({ error: 'Gagal mengambil data history' });
-      return;
-    }
-
+  try {
+    const result = await m_history.getHistoryByIdAsync(id_user); // Anda perlu mengganti ini dengan metode asynchronous yang sesuai dari model Anda
     res.status(200).json(result);
-  });
+  } catch (err) {
+    console.error('Error while getting history:', err);
+    res.status(500).json({ error: 'Gagal mengambil data history' });
+  }
 };
+
 module.exports = { getHistoryById };
